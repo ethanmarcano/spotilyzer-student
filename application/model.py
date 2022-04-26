@@ -5,6 +5,9 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from textblob import TextBlob
 import re
 
+songDF = pd.read_csv("./data1/allsong_data.csv")
+complete_feature_set = pd.read_csv("./data1/complete_feature.csv")
+playlistDF_test = pd.read_csv("./data1/test_playlist.csv")
 
 def generate_playlist_feature(complete_feature_set, playlist_df):
     '''
@@ -26,7 +29,6 @@ def generate_playlist_feature(complete_feature_set, playlist_df):
     complete_feature_set_playlist_final = complete_feature_set_playlist.drop(columns = "id")
     return complete_feature_set_playlist_final.sum(axis = 0), complete_feature_set_nonplaylist
 
-
 def generate_playlist_recos(df, features, nonplaylist_features):
     '''
     Generated recommendation based on songs in aspecific playlist.
@@ -47,8 +49,11 @@ def generate_playlist_recos(df, features, nonplaylist_features):
     
     return non_playlist_df_top_40
 
+songDF = pd.read_csv("./data1/allsong_data.csv")
+complete_feature_set = pd.read_csv("./data1/complete_feature.csv")
+playlistDF_test = pd.read_csv("./data1/test_playlist.csv")
 
-def recommend_from_playlist(songDF,complete_feature_set,playlistDF_test):
+def recommend_from_playlist(songDF=songDF,complete_feature_set=complete_feature_set,playlistDF_test=playlistDF_test):
 
     # Find feature
     complete_feature_set_playlist_vector, complete_feature_set_nonplaylist = generate_playlist_feature(complete_feature_set, playlistDF_test)
@@ -57,3 +62,6 @@ def recommend_from_playlist(songDF,complete_feature_set,playlistDF_test):
     top40 = generate_playlist_recos(songDF, complete_feature_set_playlist_vector, complete_feature_set_nonplaylist)
 
     return top40
+
+if __name__ == '__main__':
+    print(recommend_from_playlist()[:10])
