@@ -1,4 +1,4 @@
-from application import app
+from . import app
 from flask import Flask, render_template, request
 from app_stuff.extraction import *
 from app_stuff.model import *
