@@ -1,1 +1,1 @@
-web: gunicorn application.wsgi:application
+web: gunicorn --chdir application __init__:app
