@@ -1,0 +1,2 @@
+# spotilyzer
+ Analyzes Spotify stuff
