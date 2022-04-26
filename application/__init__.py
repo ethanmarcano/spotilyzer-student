@@ -1,5 +1,6 @@
 import os
 from flask import Flask
+#from flask_sqlalchemy import SQLAlchemy
 
 #create an instance of a flask app and indicating its location
 app_path = os.path.dirname(__file__)
@@ -10,6 +11,6 @@ app.config['SECRET_KEY'] = 'ALHqC7dkzjNdyZdYBMmTzQ'
 #db_path = os.path.join(os.path.dirname(__file__), 'Kanban.db')
 #URI = 'sqlite:///{}'.format(db_path)
 #app.config['SQLALCHEMY_DATABASE_URI'] = URI
-#db = SQLAlchemy(app)
+#db = sqlalchemy(app)
 
 from application import routes
