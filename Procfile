@@ -1,1 +1,1 @@
-web: gunicorn spotilyzer.wsgi:application
+web: gunicorn application.wsgi:application
